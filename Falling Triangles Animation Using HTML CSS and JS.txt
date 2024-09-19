@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+        }
+        .angle {
+            position: absolute;
+            top: -50px;
+            width: 30px;
+            height: 30px;
+            background-color: #228B22;
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            animation: fall 5s linear infinite;
+        }
+        @keyframes fall {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+<script>
+    function createAngle() {
+        const angle = document.createElement('div');
+        angle.classList.add('angle');
+        angle.style.left = Math.random() * 100 + 'vw';
+        angle.style.animationDuration = Math.random() * 2 + 3 + 's';
+        document.body.appendChild(angle);
+
+
+        setTimeout(() => {
+            angle.remove();
+        }, 5000);
+    }
+
+
+    setInterval(createAngle, 300);
+</script>
+</body>
+</html>
